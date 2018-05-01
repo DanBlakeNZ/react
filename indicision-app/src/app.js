@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import IndicisionApp from './components/IndicisionApp';
 
-const template = <p>this is JSX from webpack!</p>
-
-ReactDOM.render(template, document.getElementById('app'));
+ReactDOM.render(<IndicisionApp />, document.getElementById('app'));
