@@ -4,11 +4,13 @@ import AddOption from './AddOption';
 import Header from './Header';
 import Action from './Action';
 import Options from './Options';
+import OptionModal from './OptionModal'
 
 export default class IndicisionApp extends React.Component {
 
 	state = {
-		options: []
+		options: [],
+		selectedOption: undefined
 	}
 
 	handleDeleteOptions = ()=>{
@@ -24,7 +26,9 @@ export default class IndicisionApp extends React.Component {
 	handlePick = ()=>{
 		let randomNum = Math.floor(Math.random() * this.state.options.length);
 		const option = this.state.options[randomNum];
-		alert(option);
+		this.setState(()=> ({
+			selectedOption: option
+		}));
 	}
 
 	handleAddOption = (option)=>{
@@ -77,6 +81,9 @@ export default class IndicisionApp extends React.Component {
 				/>
 				<AddOption
 					handleAddOption={this.handleAddOption}
+				/>
+				<OptionModal 
+					selectedOption={this.state.selectedOption}
 				/>
 			</div>
 		)
