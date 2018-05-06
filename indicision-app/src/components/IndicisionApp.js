@@ -30,6 +30,12 @@ export default class IndicisionApp extends React.Component {
 			selectedOption: option
 		}));
 	}
+	
+	handleClearSelectedOption = ()=>{
+		this.setState(()=>({
+			selectedOption: undefined
+		}))
+	}
 
 	handleAddOption = (option)=>{
 		if(!option){
@@ -84,6 +90,7 @@ export default class IndicisionApp extends React.Component {
 				/>
 				<OptionModal 
 					selectedOption={this.state.selectedOption}
+					handleClearSelectedOption={this.handleClearSelectedOption}
 				/>
 			</div>
 		)

@@ -5,10 +5,11 @@ const OptionModal = (props)=> (
     <Modal
         isOpen={!!props.selectedOption} //!! is used to convert undefined to false and a string to true
         contentLabel="Selected Option"
+        onRequestClose={props.handleClearSelectedOption}
     >
         <h3>Selected Option</h3>
         {props.selectedOption && <p>{props.selectedOption}</p>}
-        <button>Okay</button>
+        <button onClick={props.handleClearSelectedOption}>Okay</button>
     </Modal>
 )
 
