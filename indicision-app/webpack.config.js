@@ -13,10 +13,11 @@ module.exports = {
             exclude: /node_modules/
         },
         {
-            test: /\.css$/,
+            test: /\.scss$/,
             use: [ // 'use' allows for the use of an array of loaders
                 'style-loader',
-                'css-loader'
+                'css-loader',
+                'sass-loader'
             ]
         }]
     },
