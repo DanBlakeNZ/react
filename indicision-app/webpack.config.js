@@ -3,14 +3,21 @@ const path = require('path');
 module.exports = {
     entry: './src/app.js',
     output: {
-        path: path.join(__dirname, 'public'), //This is the absolule path to where you want to output
+        path: path.join(__dirname, 'public'), // This is the absolule path to where you want to output
         filename: 'bundle.js'
     },
     module: {
         rules: [{
             loader: 'babel-loader',
-            test: /\.js$/,
+            test: /\.js$/,  // $ symbol means 'files that end with this eg .js or .css'
             exclude: /node_modules/
+        },
+        {
+            test: /\.css$/,
+            use: [ // 'use' allows for the use of an array of loaders
+                'style-loader',
+                'css-loader'
+            ]
         }]
     },
     devtool: 'cheap-module-eval-source-map',

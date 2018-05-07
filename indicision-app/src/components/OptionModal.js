@@ -3,7 +3,7 @@ import Modal from 'react-modal';
 
 const OptionModal = (props)=> (
     <Modal
-        isOpen={!!props.selectedOption} //!! is used to convert undefined to false and a string to true
+        isOpen={!!props.selectedOption}
         contentLabel="Selected Option"
         onRequestClose={props.handleClearSelectedOption}
     >
@@ -14,3 +14,6 @@ const OptionModal = (props)=> (
 )
 
 export default OptionModal;
+
+
+
