@@ -6,6 +6,7 @@ html {
 // 1rem equals 16px so set below in body.
 
 body {
+    background-color: $dark-blue;
     font-family: Helvetica, Arial, sans-serif;
-    font-size: 1.6rem
+    font-size: $m-size;
 }
