@@ -1,5 +1,7 @@
-.big-button{
-    background-color: $purple;
+// Big Button
+
+.big-button {
+    background: $purple;
     border: none;
     border-bottom: 0.6rem solid darken($purple, 10%);
     color: white;
@@ -9,3 +11,27 @@
     margin-bottom: $xl-size;
     padding: 2.4rem;
 }
+
+.big-button:disabled {
+    opacity: 0.5;
+}
+
+//Button
+
+.button {
+    background: $purple;
+    border: none;
+    border-bottom: .3rem solid darken($purple, 10%);
+    color: white;
+    font-weight: 500;
+    padding: $s-size;
+}
+
+// Use the hyphin syntax for Modifyers (BEM)
+.button--link { 
+    background: none;
+    border: none;
+    color: $off-black;
+    padding: 0;
+}
+// Modifiers will oftern be used in combination with another class (eg .button) - they modify the existing class, or present an alturnate version.
