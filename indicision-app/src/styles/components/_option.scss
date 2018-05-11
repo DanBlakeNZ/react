@@ -10,4 +10,5 @@
     font-weight: 500;
     font-size: 2rem;
     margin: 0;
+    word-break: break-all; // for extremely long words, they will be broken rather than running outside of container/off screen.
 }
