@@ -23,6 +23,7 @@ module.exports = {
     },
     devtool: 'cheap-module-eval-source-map',
     devServer: {
-        contentBase: path.join(__dirname, 'public')
+        contentBase: path.join(__dirname, 'public'),
+        historyApiFallback: true // Tells the devserver that we are using clientside routing, and for all 404 routes it should fallback to index.html
     }
 }
