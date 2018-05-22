@@ -1,41 +1,48 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './styles/styles.scss';
 import 'normalize.css/normalize.css';
 
 const ExpenseDashboardPage = () => (
     <div>
-        <p>This is from my dashboard component</p>
+        This is from my dashboard component
     </div>
 );
 
 const AddExpensePage = () => (
     <div>
-        <p>This is from my Add Expense component</p>
+        This is from my Add Expense component
     </div>
 );
 
 const EditExpensePage = ()=> (
     <div>
-        <p>This is from my EditExpensePage</p>
+        This is from my EditExpensePage
     </div>
 );
 
 const HelpPage = ()=> (
     <div>
-        <p>This is from my HelpPage</p>
+        This is from my HelpPage
+    </div>
+);
+
+const NotFoundPage = ()=> (
+    <div>
+       404!
     </div>
 );
 
 const routes = (
     <BrowserRouter>
-        <div>
+        <Switch> // Like a JS switch this will go through the below routes and look for a match and then stop
             <Route path="/" component={ExpenseDashboardPage} exact={true} />
             <Route path="/create" component={AddExpensePage} />
             <Route path="/edit" component={EditExpensePage} />
             <Route path="/help" component={HelpPage} />
-        </div>
+            <Route component={NotFoundPage} />
+        </Switch>
     </BrowserRouter>
 )
 
