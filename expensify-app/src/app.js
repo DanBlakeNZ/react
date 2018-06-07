@@ -13,13 +13,11 @@ import 'normalize.css/normalize.css';
 
 const store = configureStore();
 
-store.dispatch(addExpense({ description:'Water Bill' }));
-store.dispatch(addExpense({ description:'Gas Bill' }));
-store.dispatch(setTextFilter("water"));
+store.dispatch(addExpense({ description:'Water Bill', amount: 45000 }));
+store.dispatch(addExpense({ description:'Gas Bill', amount: 26000 }));
+store.dispatch(setTextFilter("gas"));
 
 const state = store.getState();
-const visableExpenses = getVisableExpenses(state.expenses, state.filters)
-console.log(visableExpenses);
 
 const jsx = (
     <Provider store={store}>
