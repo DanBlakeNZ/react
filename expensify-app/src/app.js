@@ -17,9 +17,9 @@ const store = configureStore();
 const state = store.getState();
 
 const jsx = (
-    <Provider store={store}>
-        <AppRouter />
-    </Provider>
+	<Provider store={store}>
+		<AppRouter />
+	</Provider>
 )
 
 ReactDOM.render(jsx, document.getElementById('app'));
