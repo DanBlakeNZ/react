@@ -1,22 +1,32 @@
 import uuid from 'uuid';
+import database from '../firebase/firebase';
 
-export const addExpense = (
-	{
-		description = '', 
-		note ='', 
-		amount = 0, 
-		createdAt = 0 
-	} = {}
-) => ({
+export const addExpense = (expense) => ({
 	type: 'ADD_EXPENSE',
-	expense: {
-		id: uuid(),
-		description, //description: description
-		note,
-		amount,
-		createdAt
-	}
+	expense
 });
+
+// Returns the thing that was dispatched
+export const startAddExpense = (expenseData = {}) => {
+	// Requires Redux-thunk to work - redux cant return a function by default.
+	return (dispatch) => { // Gets called by redux with dispatch included.
+		const {
+			description = '',
+			note ='',
+			amount = 0,
+			createdAt = 0
+		} = expenseData;
+
+		const expense = { description, note, amount, createdAt };
+
+		return database.ref('expenses').push(expense).then((ref) => {
+			dispatch(addExpense({
+				id: ref.key,
+				...expense
+			}));
+		});
+	};
+};
 
 export const removeExpense = ( { id } = {} ) => ({
 	type:'REMOVE_EXPENSE',
