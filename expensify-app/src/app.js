@@ -1,11 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import AppRouter from './routers/AppRouter';
+import AppRouter, { history } from './routers/AppRouter';
 import configureStore from './store/configureStore';
 import { startSetExpenses } from './actions/expenses';
-import { setTextFilter } from './actions/filters';
-import getVisableExpenses from './selectors/expenses'
+import { login, logout } from './actions/auth';
 
 import './styles/styles.scss';
 import 'normalize.css/normalize.css';
@@ -20,16 +19,28 @@ const jsx = (
 	</Provider>
 );
 
+let hasRendered = false;
+const renderApp = () => { //ensure the app only renders a single time;
+	if (!hasRendered) {
+		ReactDOM.render(jsx, document.getElementById('app'));
+		hasRendered = true;
+	}
+};
+
 ReactDOM.render(<p>Loading...</p>, document.getElementById('app'));
 
-store.dispatch(startSetExpenses()).then(() => {
-	ReactDOM.render(jsx, document.getElementById('app'));
-})
-
 firebase.auth().onAuthStateChanged((user) => {
-	if (user) {
-		console.log('log in')
-	} else {
-		console.log('log out')
+	if (user) { //Is logged in
+		store.dispatch(login(user.uid));
+		store.dispatch(startSetExpenses()).then(() => {
+			renderApp();
+			if (history.location.pathname === '/'){ // If current location is login page
+				history.push('dashboard'); // go to dashboard
+			}
+		});
+	} else { // Is logged out
+		store.dispatch(logout());
+		renderApp();
+		history.push('/'); // redirect to login page
 	}
 });
