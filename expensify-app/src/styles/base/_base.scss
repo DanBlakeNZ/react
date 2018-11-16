@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 html {
     font-size: 62.5% //of its current size
 }
@@ -6,9 +10,9 @@ html {
 // 1rem equals 16px so set below in body.
 
 body {
-    background-color: white;
     font-family: Helvetica, Arial, sans-serif;
     font-size: $m-size;
+    line-height: 1.6;
 }
 
 button {
