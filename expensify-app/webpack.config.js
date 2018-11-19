@@ -15,7 +15,7 @@ module.exports = (env) => {
 	const CSSExtract = new ExtractTextPlugin('styles.css')
 
 	return {
-		entry: './src/app.js',
+		entry: ['babel-polyfill', './src/app.js'], //Babel-polyfill provides wider browser support
 		output: {
 			path: path.join(__dirname, 'public', 'dist'), // This is the absolule path to where you want to output (../public/dist)
 			filename: 'bundle.js'
